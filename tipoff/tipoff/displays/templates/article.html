@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %} {{article_blog.title}} {% endblock %}
+{% load staticfiles %}
+{% block content %}
+    {% if article_blog %}
+        <div class="container"  style="margin-top: 60px;">
+            <div class="col-md-3">
+            <ul class="nav nav-pills nav-stacked">
+              <li role="presentation" class="active"><a href="{% url 'home' %}">
+                 <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>  Back</a></li>
+
+            </ul>
+        </div>
+            <div class="col-md-9">
+                <div style="text-align: justify;">
+                    <h3 style="margin-top: 0px;">{{ article_blog.title|safe}}</h3>
+                    <p >{{ article_blog.text|safe }}</p>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

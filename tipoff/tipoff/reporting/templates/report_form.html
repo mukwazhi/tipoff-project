@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load bootstrap %}
+{% block title %}Report{% endblock %}
+{% block content %}
+    <div class="container report-form">
+        <div class=" col-md-6 col-md-offset-3">
+        <form method="post" action="#">{% csrf_token%}
+        <div class="panel panel-default">
+              <div class="panel-heading"><b>Incident Details</b></div>
+              <div class="panel-body">
+
+                {{ incidentform.station|bootstrap }}
+                {{ incidentform.other_station|bootstrap }}
+                {{ incidentform.nature_of_report|bootstrap }}
+                {{ incidentform.date_of_incident|bootstrap }}
+                {{ incidentform.time_of_incident|bootstrap }}
+                {{ incidentform.location_of_incident|bootstrap }}
+              </div>
+        </div>
+        <div class="panel panel-default">
+           <div class="panel-heading"><b>Narrative of Incident</b></div>
+              <div class="panel-body">
+                {{ incidentform.name_of_party_involved|bootstrap }}
+                {{ incidentform.organisation|bootstrap }}
+                {{ incidentform.gender|bootstrap }}
+                {{ incidentform.role|bootstrap }}
+                {{ incidentform.incident_detail|bootstrap }}
+                {{ incidentform.upload_evidence|bootstrap }}
+                {{ incidentform.captcha }}
+           </div>
+        </div>
+        <div class="panel panel-default">
+           <div class="panel-heading">
+               <button class="btn btn-warning" type="button" data-toggle="collapse"
+                       data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="margin-top: 5px;">
+                  Optional* Contact information
+                </button>
+           </div>
+        <div class="panel-body">
+            <!--collapsing form-->
+            <div class="collapse" id="collapseExample">
+              <div class="well">
+                {{ incidentform.Full_Name|bootstrap }}
+                {{ incidentform.Position_Title|bootstrap }}
+                {{ incidentform.Phone_no|bootstrap }}
+                {{ incidentform.email|bootstrap }}
+              </div>
+            </div>
+        </div>
+        </div>
+            <button type='submit' class="btn btn-success" data-toggle="" style="width: 100%; margin-top: 10px;">Submit</button>
+        </form>
+
+
+
+    </div>
+    </div>
+<hr>
+{% endblock %}

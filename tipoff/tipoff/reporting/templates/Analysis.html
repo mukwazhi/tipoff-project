@@ -1,0 +1,145 @@
+{% extends 'admin.html' %}
+{% load staticfiles %}
+{% block title %} Report List {% endblock %}
+{% block content %}
+<div class="col-md-10 col-md-offset-2 ">
+    <div class="container">
+        <h1 style="color: black">Visual Reports</h1>
+         <hr>
+        <div class=" col-md-6 pull-left">
+            <script src="https://code.highcharts.com/highcharts.js"></script>
+            <script src="https://code.highcharts.com/modules/exporting.js"></script>
+            <div id="container" style=" height: 300px; margin: 0 auto"></div>
+
+
+            <script>
+                // Radialize the colors
+    Highcharts.setOptions({
+        colors: Highcharts.map(Highcharts.getOptions().colors, function (color) {
+            return {
+                radialGradient: {
+                    cx: 0.5,
+                    cy: 0.3,
+                    r: 0.7
+                },
+                stops: [
+                    [0, color],
+                    [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+                ]
+            };
+        })
+    });
+
+    // Build the chart
+    Highcharts.chart('container', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Summary'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    },
+                    connectorColor: 'silver'
+                }
+            }
+        },
+        series: [{
+            name: 'Percentage',
+            data: [
+            {% for summary in summary%}
+                { name: '{{summary.nature_of_report}}', y: {{summary.nature_of_report__count}} },
+            {% endfor%}
+            ]
+        }]
+    });
+
+            </script>
+    </div>
+        <div class="col-md-6 pull-right">
+            <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container2" style="  height: 300px; margin: 0 auto"></div>
+
+            <script>
+                Highcharts.chart('container2', {
+    chart: {
+        type: 'bar'
+    },
+    title: {
+        text: 'Station Reports'
+    },
+    subtitle: {
+        text: 'Cases by Station'
+    },
+    xAxis: {
+        categories: [{% for station in station %}
+        '{{station.station}}',
+        {% endfor %}],
+        title: {
+            text: null
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: ' cases',
+            align: 'high'
+        },
+        labels: {
+            overflow: 'justify'
+        }
+    },
+    tooltip: {
+        valueSuffix: ' cases'
+    },
+    plotOptions: {
+        bar: {
+            dataLabels: {
+                enabled: true
+            }
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'top',
+        x: -40,
+        y: 80,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+        shadow: true
+    },
+    credits: {
+        enabled: false
+    },
+    series: [{
+        name: '',
+        data: [
+        {% for station in station %}
+        {{station.station__count}},
+        {% endfor %}]
+    }]
+});
+            </script>
+        </div>
+
+</div>
+</div>
+{% endblock%}

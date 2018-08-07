@@ -1,0 +1,105 @@
+.container .disart{
+    text-align: justify;
+    font-family: 'lora';
+    color: #fff;
+    }
+
+.container{
+    font-size: 14px;
+}
+
+
+.defi h2{
+    font-family: 'lora';
+    text-align: center;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.info-art{
+    font-family: 'lora';
+    text-align: center;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.btn:hover{
+    background-color: black;
+    transition: transform 1s ease;
+    transition: transform 1s ease;
+    -webkit-animation-name: example; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 4s; /* Chrome, Safari, Opera */
+    animation-name: example;
+    animation-duration: 4s;
+}
+
+@-webkit-keyframes example {
+    from {background-color: grey;}
+    to {background-color: yellow;}
+}
+@keyframes example {
+    from {background-color: blue;}
+    to {background-color: black;}
+    }
+
+
+.info-art{
+    background-color: grey;
+}
+.prt{
+    background-color: orange;
+}
+.prt h2{
+    margin-top: 10px;
+}
+
+.report-form{
+    margin-top: 60px;
+}
+
+.about{
+    text-align: justify;
+}
+
+.container h3{
+    font-family: 'lora';
+    text-align: center;
+    text-align: center;
+    magin-top: 0px;
+}
+
+.container p{
+    text-align: justify;
+}
+.types{
+    background-color: #E8E8E8;
+}
+/* ---------------------------------------------
+                contact
+------------------------------------------------*/
+.contact{
+
+    margin-top: 60px;
+}
+.cnct-panel{
+    background-color: grey;
+}
+.panel-heading h3{
+    font-family: 'lora';
+    padding-right: 10px;
+     text-align: center;
+}
+span.glyphicon.glyphicon-envelope{
+    color: pink;
+}
+.btn.btn-info{
+    width: 100%;
+}
+
+p.help-block {         
+    display: block;
+    font-style: italic;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #737373;
+                    }

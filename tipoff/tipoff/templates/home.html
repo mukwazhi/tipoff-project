@@ -1,0 +1,85 @@
+    {% extends 'base.html' %}
+    {% load staticfiles %}
+    {% load bootstrap %}
+    {% block title %}Home{% endblock %}
+    {% block content %}
+
+    {% for brand in brand %}
+    <div style="margin-top: 50px; height: 700px; background-image: url('{{MEDIA_URL}}{{brand.banner}}');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover; ">
+
+      <div class="container " >
+        <div class="col-md-6 disart" >
+        <h1 style="color: #fff;">Reporting Fraud, Corruption & Unethical Behavior</h1>
+
+            <p>It is the responsibility of every citizen, customer, supplier, employee or stakeholder to report fraud, corruption or unethical behavior. Reports can be made on this website by clicking on the <a href="{% url 'report_form'%}">Submit a Report</a> button or by calling us on any of the following toll free numbers: </p>
+
+            <p>Tip-off information can also be given to us by calling on any of the following toll free  numbers depending on your network service provider;
+        <ul>
+            <li style="color: white;">0808 0017    - Netone</li>
+            <li style="color: white;">0808 0232    - Econet</li>
+            <li style="color: white">0731 575 138 - Telecel</li>
+        </ul></p>
+            <p><a class="btn btn-primary btn-lg" href="{% url 'report_form'%}" role="button">Submit A Report &raquo;</a></p>
+            <h1 style=" color: #fff;">Track A Report</h1>
+            <p>
+            You can track the status of a report you made at any time using the report key you
+            received on submission of the report. If there are any further questions concerning your report,
+            these will be posted to your file on the website, to which you can respond.  </p>
+          <p ><a class="btn btn-primary btn-lg " href="{% url 'track'%}" role="button">Track A Report &raquo;</a></p>
+      </div>
+          </div>
+    </div>
+     {% endfor %}
+    <div class="info-art">
+    <div class="container" >
+      <!-- Example row of columns -->
+      <div class="row">
+          {% for article in article_blog %}
+        <div class="col-md-4">
+          <h2>{{article.title}}</h2>
+          <p>{{article.text|safe|truncatewords:"120"}}  </p>
+          <!--<p><a class="btn btn-default" href="{% url 'article' article.slug %}" role="button">Read more &raquo;</a></p>-->
+        </div>
+           {% endfor %}
+
+        <div class="col-md-4 prt" style="background-color: orange;">
+            <h2>Protection & Confidentiality</h2>
+            <p>NHS Board and Management give an undertaking to all whistleblowers that the company shall not take action against a whistleblower for reporting, and that all reports will be kept confidential and secure. A guarantee of anonymity shall be granted if so desired by the whistleblower but to the extent as provided by the law which may require the disclosure of the identity of the whistleblower in legal proceedings.<br>
+                It is the Company's undertaking that any person who reports reportable conduct as defined by NHS <a href="#">Fraud Risk Management Policy </a> shall not be disadvantaged in any way for having made the report.</p>
+          <!--<p><a class="btn btn-default" href="#" role="button">Read more &raquo;</a></p>-->
+      </div>
+          </div>
+            </div>
+
+      <hr>
+        {% for image in brand %}
+        <div style="background-color: #E8E8E8;">
+        <div class="container types" style="">
+           <h2 style="text-align: center;"> Anonymously Report </h2>
+            <div class="col-md-3">
+                <h3>Fraud</h3>
+                  <p>The term ‘Fraud’ shall be used to mean any illegal act or omission characterised by deceit, concealment or violation of trust, perpetrated to obtain money, property or services; to avoid payment or loss of services; or to secure personal or business advantage, irrespective of the application of threat of violence or of physical force. </p>
+            </div>
+            <div class="col-md-3">
+                <h3>Corruption</h3>
+                  <p>The term ‘Corruption’ shall be used to mean requesting, offering, giving or accepting, directly or indirectly, a bribe or any other undue advantage or prospect thereof, which distorts the proper performance of any duty or behaviour required of the recipient of the bribe, the undue advantage or the prospect thereof. </p>
+            </div>
+            <div class="col-md-3">
+                <h3>Theft</h3>
+                 <p>Theft is the taking of another person's property or services without that person's permission or consent with the intent to deprive the rightful owner of it. Common examples are burglary, embezzlement, looting, robbery, library theft, and fraud (that is, obtaining money under false pretenses). </p>
+            </div>
+            <div class="col-md-3">
+                <h3>Unethical Behaviour</h3>
+                  <p>Unethical behavior is an action that falls outside of what is considered morally right or proper for a person, a profession or an industry. Individuals can behave unethically, as can businesses and professionals. </p>
+            </div>
+
+            </div>
+        </div>
+        <!--{% endfor %}-->
+        <!--</div>-->
+    </div> <!-- /container -->
+{% endblock %}

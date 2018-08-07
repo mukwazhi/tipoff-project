@@ -1,0 +1,21 @@
+{% extends "logging_base.html" %}
+{%load staticfiles %}
+{% load bootstrap %}
+ {% block title %}Tracking{% endblock %}
+{% block log_content %}
+<div class="container">
+    <div class="log">
+        <h1>Report Tracking</h1>
+           <hr>
+    <form class="form-signin">
+        {% if invalid %}
+        <h3>{{invalid}}</h3>
+        {% endif %}
+    <input type="text" class="form-control"  name="q" placeholder="Tracking Code">
+        <br>
+        <button type="submit" class="btn btn-info">Track</button>
+    </form>
+
+    </div>
+    </div>
+{% endblock %}

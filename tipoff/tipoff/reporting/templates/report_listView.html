@@ -1,0 +1,38 @@
+{% extends 'admin.html' %}
+{% load staticfiles %}
+{% block title %} Report List {% endblock %}
+{% block content %}
+    <div class="col-md-10 col-md-offset-2 pull-left">
+
+ <div class="container" >
+    <h1 class="page-header" style="color: black;">Tipoff Report List</h1>
+        <table class="table table-condensed table-hover">
+            <thead>
+            <tr>
+                <th>Item </th>
+               <th class="col-md-1">Report No </th>
+                <th class="col-md-1">Date of Incident </th>
+                <th class="col-md-1">Nature of Report </th>
+                <th class="col-md-1">location</th>
+                <th class="col-md-1">Detailed</th>
+                <th class="col-md-1">PDF</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for report in report %}
+                <tr>
+                    <td class="col-md-1">{{ forloop.counter }} </td>
+                     <td class="col-md-1">{{ report.report_no}} </td>
+                    <td class="col-md-1">{{ report.date_of_incident}}</td>
+                    <td class="col-md-1">{{ report.nature_of_report}}</td>
+                    <td class="col-md-1">{{ report.location_of_incident}}</td>
+                    <td><a href="{% url 'detailed_report' report.report_no %}"> View</a></td>
+                    <td><a href="{% url 'some_view' report.report_no %}"> pdf</a></td>
+
+
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+        </div>
+{% endblock %}

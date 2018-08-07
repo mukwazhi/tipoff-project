@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+ <ul class="timeline" style="margin-top: 90px;">
+    <li class="timeline-event">
+      <label class="timeline-event-icon"></label>
+      <div class="timeline-event-copy">
+        <p class="timeline-event-thumbnail">Tipoff-Reporting Status</p>
+        <h3>Report Reference : {{tracking.report_number}}</h3>
+        <h4>Report Tracking Number : {{tracking.tracking_number}}</h4>
+        <h4>Report Tracking Status : {{tracking.report_status}}</h4>
+        {% if tracking.report_status == 'Evaluation' %}
+        <p>
+          We are currently assessing the significance of the reported incident.
+        </p>
+        {% elif tracking.report_status == 'Investigation' %}
+        <p>
+          We are making a formal enquiry on the report to determine the facts.
+        </p>
+        {% elif tracking.report_status == 'Disciplinary' %}
+        <p>
+          Results of the investigation have been communicated to management and appropriate action is being taken.
+        </p>
+        {% elif tracking.report_status == 'Insufficient' %}
+        <p>
+          Case temporarily closed due to insufficient detail.
+        </p>
+        {% elif tracking.report_status == 'Closed' %}
+        <p>
+          Appropriate action has been taken. Thank you for your report
+        </p>
+        {% endif %}
+
+      </div>
+    </li>
+</ul>
+{% endblock %}

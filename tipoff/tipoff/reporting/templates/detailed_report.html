@@ -1,0 +1,123 @@
+{% extends 'admin.html' %}
+{% load staticfiles %}
+{% block title %} Detailed View {% endblock %}
+{% block content %}
+    <div class="col-md-10 col-md-offset-2 pull-left">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                 <h3 class="panel-title"><b>Report Details</b></h3>
+            </div>
+        <div class="panel-body">
+              <table class="table table-condensed  table-striped">
+                <tr>
+                <th class="col-md-3">Report No </th>
+                <td>{{ report.report_no}} </td>
+                </tr>
+
+                    <tr>
+                <th class="row">Nature of Report </th>
+                <td>{{ report.nature_of_report}}</td>
+                </tr>
+
+                    <tr>
+                <th class="row">Date of Incident </th>
+                <td>{{ report.date_of_incident}}</td>
+                </tr>
+
+                    <tr>
+                <th class="row">time of incident </th>
+                <td>{{ report.time_of_incident}}</td>
+                </tr>
+
+                <tr>
+            <th class="row">Location of Incident </th>
+                <td>{{ report.location_of_incident}}</td>
+                </tr>
+
+                <tr>
+            <th class="row">Specific Location </th>
+                <td>{{ report.specific_location}}</td>
+                </tr>
+              </table>
+        </div>
+        </div>
+    </div>
+ <div class="col-md-10 col-md-offset-2 pull-left">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                 <h3 class="panel-title"><b>Incident Details</b></h3>
+            </div>
+        <div class="panel-body">
+              <table class="table table-condensed  table-striped">
+                <tr>
+                <th class="col-md-3">Party/ies Involved </th>
+                <td>{{ report.name_of_party_involved}}</td>
+                </tr>
+                    <tr>
+                <th class="row">Organisation </th>
+                <td>{{ report.organisation}}</td>
+                </tr>
+                    <tr>
+                <th class="row">Gender </th>
+                <td>{{ report.gender}}</td>
+                </tr>
+                    <tr>
+                <th class="row">Role </th>
+                <td>{{ report.role}}</td>
+                </tr>
+                <tr>
+            <th class="row">Incident details </th>
+                <td>{{ report.incident_detail|safe}}</td>
+                </tr>
+                <tr>
+            <th class="row">Evidence Uploaded </th>
+                <td>{{ report.upload_evidence}}></td>
+                </tr>
+
+              </table>
+        </div>
+            </div>
+
+             <div class="panel panel-default">
+            <div class="panel-heading">
+                 <h3 class="panel-title"><b>Reporting Individual Details</b></h3>
+            </div>
+        <div class="panel-body">
+              <table class="table table-condensed  table-striped">
+                <tr>
+                <th class="col-md-3">Full Name </th>
+                    {% if report.Full_Name %}
+                <td>{{ report.Full_Name}}</td>
+                    {% else %}
+                    <td>Anonymous*</td>
+                    {% endif %}
+                </tr>
+                    <tr>
+                <th class="row">Position Title </th>
+                         {% if report.Full_Name %}
+                <td>{{ report.Position_Title}}</td>
+                         {% else %}
+                    <td>Anonymous*</td>
+                    {% endif %}
+                </tr>
+                    <tr>
+                <th class="row">Phone No </th>
+                         {% if report.Full_Name %}
+                <td>{{ report.Phone_no}}</td>
+                         {% else %}
+                    <td>Anonymous*</td>
+                    {% endif %}
+                </tr>
+                    <tr>
+                <th class="row">Email </th>
+                         {% if report.Full_Name %}
+                <td>{{ report.email}}</td>
+                         {% else %}
+                    <td>Anonymous*</td>
+                    {% endif %}
+                </tr>
+              </table>
+        </div>
+        </div>
+    </div>
+{% endblock%}

@@ -1,0 +1,30 @@
+{% extends "logging_base.html" %}
+{%load staticfiles %}
+{% load bootstrap %}
+{% block title %}Admin login{% endblock %}
+{% block log_content %}
+<div class="container">
+    <div class="log">
+    {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+    {% if next %}
+        {% if user.is_authenticated %}
+            <p>Your account doesn't have access to this page. To proceed,
+        please login with an account that has access.</p>
+        {% else %}
+            <p>Please login to see this page.</p>
+        {% endif %}
+    {% endif %}
+        <h1>Tipoff Admin login</h1>
+    <form class="form-signin" method="post" action="{% url 'login' %}">{% csrf_token %}
+        {{ form.username|bootstrap}}
+        {{ form.password|bootstrap }}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+{# Assumes you setup the password_reset view in your URLconf #}
+
+    </div>
+    </div>
+{% endblock %}

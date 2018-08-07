@@ -1,0 +1,14 @@
+{% extends "logging_base.html" %}
+{%load staticfiles %}
+{% load bootstrap %}
+{% block title %}Thank you{% endblock %}
+{% block log_content %}
+<div class="container">
+    <div class="log">
+        <h1>Thanks for your submission</h1>
+        <hr>
+        <h1>Your Report Tracking code is : {{tracking.tracking_number}}</h1>
+
+    </div>
+    </div>
+{% endblock %}

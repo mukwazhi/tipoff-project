@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %} Contact Us {% endblock %}
+{% load bootstrap %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="contact">
+
+ <div class="col-md-6 col-md-offset-3">
+         <div class="panel cnct-panel">
+             <div class="panel-heading"  >
+                    <h3><span class="glyphicon glyphicon-envelope"></span> Make A Suggestion </h3>
+             </div>
+             <div class="panel-body">
+                 {{ form.non_field_errors }}
+    <form role="form" action="" method="post" >{% csrf_token %}
+        <div class="fieldWrapper">
+            {{ form.subject.errors }}
+            <!--<label for="{{ form.subject.id_for_label }}">Email subject:</label>-->
+            {{ form.subject|bootstrap }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.message.errors }}
+            <!--<label for="{{ form.message.id_for_label }}">Your message:</label>-->
+            {{ form.message|bootstrap }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.sender.errors }}
+            <!--<label for="{{ form.sender.id_for_label }}">Your email address:</label>-->
+            {{ form.contact_email|bootstrap }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.cc_myself.errors }}
+            <!--<label for="{{ form.cc_myself.id_for_label }}">CC yourself?</label>-->
+            {{ form.cc_myself|bootstrap }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.cc_myself.errors }}
+            <!--<label for="{{ form.cc_myself.id_for_label }}">CC yourself?</label>-->
+            {{ form.captcha|bootstrap }}
+        </div>
+    <button type="submit" class="btn btn-info">Submit</button>
+
+    </form>
+    </div>
+         </div>
+ </div>
+    </div>
+
+{% endblock %}
